@@ -6,15 +6,21 @@
 {% block content %}
     
     
-    
+{% load crispy_forms_tags %}
+
+<form action="" method="POST">
     {% for i in mylist %}
-     <form action="" method="POST">
         {% csrf_token %}
-        {{ pizzaForm }} 
-        {{ sauceForm }} 
-        <input type="submit" value="Submit">
-     </form>
+        {{ pizzaForm | crispy }} 
+        {{ sauceForm | crispy }} 
+        <br>
+        <br>
+        <br>
+        <hr>
+        <hr>
     {% endfor %}
+    <input type="submit" value="Submit">
+</form>
     
         
 

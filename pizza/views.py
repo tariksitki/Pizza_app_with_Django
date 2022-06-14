@@ -1,6 +1,6 @@
 from unicodedata import name
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .forms import PizzaForm, SauceForm
 
 # Create your views here.
@@ -31,7 +31,16 @@ def numberOfPizza(request):
     sauceForm = SauceForm()
     number_pizza = int(request.GET.get("number"))
     mylist = [1 for i in range(number_pizza)]
-    print(mylist)
+    
+    if request.method == "POST":
+        pizzaForm = PizzaForm(request.POST)
+        sauceForm = SauceForm(request.POST)
+        if pizzaForm.is_valid() and sauceForm.is_valid():
+            pizza = pizzaForm.save()
+            sauce = sauceForm.save(commit = False)
+            sauce.pizza = pizza 
+            sauce.save()
+            return redirect("home")
 
 
     context = {
