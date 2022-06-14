@@ -1,6 +1,16 @@
 
+
+{% extends "pizza/base.html" %}
 {% load static %}
-{% extends "base.html" %}
 
 
-<h1>form</h1>
+
+{% block content %}
+<div>
+    <form action="{% url 'pizzas' %}">
+        <input type="number" name="number" id="number">
+        <input type="submit" value="Send">
+    </form>
+</div>
+{% endblock content %}
+    
