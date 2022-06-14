@@ -1,7 +1,7 @@
 from unicodedata import name
 from django.http import HttpResponse
 from django.shortcuts import render
-from .forms import PizzaForm
+from .forms import PizzaForm, SauceForm
 
 # Create your views here.
 
@@ -27,7 +27,8 @@ def order(request):
 
 def numberOfPizza(request):
     # print(int(request.GET.get("number")))
-    form = PizzaForm()
+    pizzaForm = PizzaForm()
+    sauceForm = SauceForm()
     number_pizza = int(request.GET.get("number"))
     mylist = [1 for i in range(number_pizza)]
     print(mylist)
@@ -35,7 +36,8 @@ def numberOfPizza(request):
 
     context = {
         "mylist" : mylist,
-        "form" : form
+        "pizzaForm" : pizzaForm,
+        "sauceForm" : sauceForm
 
     }
 

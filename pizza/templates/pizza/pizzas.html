@@ -10,8 +10,9 @@
     {% for i in mylist %}
      <form action="" method="POST">
         {% csrf_token %}
-        {{ form }} 
-
+        {{ pizzaForm }} 
+        {{ sauceForm }} 
+        <input type="submit" value="Submit">
      </form>
     {% endfor %}
     
