@@ -8,8 +8,8 @@
     
 {% load crispy_forms_tags %}
 
-<form action="" method="POST">
-    {% for i in mylist %}
+{% for i in mylist %}
+<form action="" method="POST" class="myform">
         {% csrf_token %}
         {{ pizzaForm | crispy }} 
         {{ sauceForm | crispy }} 
@@ -18,13 +18,11 @@
         <br>
         <hr>
         <hr>
-    {% endfor %}
-    <input type="submit" value="Submit">
+        {% endfor %}
+        <button type="submit">Submit</button>
 </form>
+  
+        <!-- <input type="submit" value="Submit"> -->
     
-        
-
-        
-
 {% endblock content %}
     
